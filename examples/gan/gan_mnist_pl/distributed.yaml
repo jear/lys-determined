@@ -21,5 +21,5 @@ searcher:
   max_length:
     epochs: 10
 resources:
-  slots_per_trial: 4
+  slots_per_trial: 3
 entrypoint: model_def:GANTrial

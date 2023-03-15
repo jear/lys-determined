@@ -5,7 +5,7 @@ name: stl10_pytorch_const
 entrypoint: model_def:BYOLTrial
 records_per_epoch: 105000
 resources:
-  slots_per_trial: 8
+  slots_per_trial: 3
   shm_size: 17179869184
 min_validation_period:
   epochs: 2

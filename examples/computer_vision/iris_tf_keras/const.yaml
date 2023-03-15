@@ -1,4 +1,4 @@
-name: iris_tf_keras_const
+name: test
 data:
   train_url: http://download.tensorflow.org/data/iris_training.csv
   test_url: http://download.tensorflow.org/data/iris_test.csv
@@ -14,3 +14,24 @@ searcher:
   max_length:
     batches: 5000
 entrypoint: model_def:IrisTrial
+environment:
+  pod_spec:
+    apiVersion: v1
+    kind: Pod
+    metadata:
+      labels:
+        customLabel: task-specific-label
+    spec:
+      containers:
+      - name: determined-container
+        securityContext:
+          privileged: true
+        volumeMounts:
+        - name: vault-token-volume
+          mountPath: "/var/vault-token"
+          readOnly: true
+      volumes:
+      - name: vault-token-volume
+        secret:
+          secretName: vault-token 
+          defaultMode: 0600
