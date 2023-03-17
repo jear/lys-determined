@@ -1,4 +1,7 @@
 # lys-determined
+
+  https://github.com/jear/my-nfs-csi
+  
 ```
 export DET_MASTER=mlde.gpu03.lysdemolab.fr
 det user login pollen
