@@ -3,4 +3,3 @@ git clone https://github.com/facebookresearch/detectron2 detectron2_repo
 pip install -e detectron2_repo -f \
   https://dl.fbaipublicfiles.com/detectron2/wheels/cu113/torch1.10/index.html
 pip install horovod==0.24.2
-
