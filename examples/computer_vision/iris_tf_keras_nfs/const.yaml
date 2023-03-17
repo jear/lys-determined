@@ -1,0 +1,42 @@
+name: test
+data:
+  train_url: http://download.tensorflow.org/data/iris_training.csv
+  test_url: http://download.tensorflow.org/data/iris_test.csv
+hyperparameters:
+  learning_rate: 1.0e-4
+  learning_rate_decay: 1.0e-6
+  layer1_dense_size: 16
+  global_batch_size: 30
+searcher:
+  name: single
+  metric: val_categorical_accuracy
+  smaller_is_better: false
+  max_length:
+    batches: 5000
+entrypoint: model_def:IrisTrial
+environment:
+  pod_spec:
+    apiVersion: v1
+    kind: Pod
+    metadata:
+      labels:
+        customLabel: task-specific-label
+    spec:
+      containers:
+      - name: determined-container
+        volumeMounts:
+        - name: vault-token-volume
+          mountPath: "/var/vault-token"
+          readOnly: true
+        - name: nfs
+          mountPath: "/mnt/nfs"
+          readOnly: true
+      volumes:
+      - name: vault-token-volume
+        secret:
+          secretName: vault-token 
+          defaultMode: 0600
+      - name: nfs
+        persistentVolumeClaim:
+          claimName: pvc-nfs-static
+
