@@ -1,6 +1,6 @@
 name: detectron2_distributed
 environment:
-  image: "determinedai/example-detectron2:0.6-cuda-10.2-pytorch-1.10"
+  image: "determinedai/environments:cuda-11.3-pytorch-1.12-gpu-mpi-0.20.1"
   environment_variables:
     - DETECTRON2_DATASETS=/mnt/dtrain-fsx/detectron2
   pod_spec:
@@ -33,7 +33,7 @@ searcher:
   smaller_is_better: false
 resources:
     slots_per_trial: 3
-    shm_size: 824600000000
+#    shm_size: 824600000000
 entrypoint: model_def:DetectronTrial
 #bind_mounts:
 #  - host_path: /path/to/data
