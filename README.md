@@ -13,4 +13,14 @@ det experiment create --project_id $PROJECT_ID const.yaml .
 det experiment create --project_id $PROJECT_ID adaptive.yaml .
 
 det experiment create --project_id $PROJECT_ID distributed.yaml .
+
+
+
+det checkpoint download a5319a67-d19d-4bf1-b5ec-9d7e68077f93 -o ./a5319a67-d19d-4bf1-b5ec-9d7e68077f93   
+
+
+# Troubleshooting
+det  -m https://determined.83-206-89-105.nip.io/ shell start --config environment.image=determinedai/example-detectron2:0.6-cuda-10.2-pytorch-1.10 --config resources.slots=1 -- -L 6006:localhost:6006
+
+
 ```
