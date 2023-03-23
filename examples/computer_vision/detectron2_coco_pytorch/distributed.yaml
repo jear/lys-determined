@@ -33,7 +33,7 @@ searcher:
   smaller_is_better: false
 resources:
     slots_per_trial: 3
-#    shm_size: 824600000000
+    shm_size: 824600000000
 entrypoint: model_def:DetectronTrial
 #bind_mounts:
 #  - host_path: /path/to/data
