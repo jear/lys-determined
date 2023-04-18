@@ -3,6 +3,9 @@ environment:
   image: "determinedai/environments:cuda-11.3-pytorch-1.12-gpu-mpi-0.20.1"
   environment_variables:
     - DETECTRON2_DATASETS=/mnt/dtrain-fsx/detectron2
+    - NCCL_DEBUG=INFO                                                                           
+    # You may need to modify this to match your network configuration.                          
+    - NCCL_SOCKET_IFNAME=bond,ens,eth,ib
   pod_spec:
     apiVersion: v1
     kind: Pod
@@ -32,7 +35,7 @@ searcher:
     batches: 90000
   smaller_is_better: false
 resources:
-    slots_per_trial: 3
+    slots_per_trial: 2
     shm_size: 824600000000
 entrypoint: model_def:DetectronTrial
 #bind_mounts:
